@@ -5,9 +5,9 @@ export let tasks = []
 // Function to initialize and render the task list when the app loads
 export const taskList = () => {
     createTaskList()
-    }
-    
-    // Function to add a new task to the task list and recall the list
+}
+
+// Function to add a new task to the task list and recall the list
 export const addTaskToList = task => {
     tasks.push(task)
     createTaskList()
@@ -54,11 +54,13 @@ const editTask = index => {
     document.getElementById('edit-title').value = task.title
     document.getElementById('edit-description').value = task.description
     document.getElementById('edit-dueDate').value = task.dueDate
+
     document.getElementById('edit-status').value = task.status
     document.getElementById('edit-task-form').onsubmit = (event) => {
         event.preventDefault()
         saveChanges(index)
     }
+
 }
 
 // this function saves changes of the task
@@ -76,5 +78,4 @@ const saveChanges = index => {
 
 // this closes the modal when clicked!
 document.querySelector('.close').onclick = () => document.getElementById('editModal').classList.remove('active')
-
 

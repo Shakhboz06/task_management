@@ -1,15 +1,15 @@
 let tasks = []
 
 export const taskList = () => {
-    renderTaskList()
+    createTaskList()
 }
 
 export const addTaskToList = task => {
     tasks.push(task)
-    renderTaskList()
+    createTaskList()
 }
 
-export const renderTaskList = () => {
+const createTaskList = () => {
     const taskList = document.getElementById('task-list')
     taskList.innerHTML = ''
 
@@ -20,7 +20,7 @@ export const renderTaskList = () => {
         elem.innerHTML = `
       <div>
         <h3>${task.title}</h3>
-        <span>${task.description}</span>
+        <p class="desc">${task.description}</p>
         <p>Due Date: ${date}</p>
         <p>Status: <span class="${task.status === "To Do" ? "red" : task.status === "In Progress" ? "blue" : "green"}">${task.status}</span></p>
       </div>
@@ -36,7 +36,7 @@ export const renderTaskList = () => {
 
 const deleteTask = index => {
     tasks.splice(index, 1)
-    renderTaskList()
+    createTaskList()
 }
 
 const editTask = index => {
@@ -63,7 +63,7 @@ const saveChanges = index => {
     }
 
     document.getElementById('editModal').classList.remove('active')
-    renderTaskList()
+    createTaskList()
 }
 
 document.querySelector('.close').onclick = () => document.getElementById('editModal').classList.remove('active')

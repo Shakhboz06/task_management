@@ -2,6 +2,7 @@
     font-family: 'Roboto';
     src: url('/Styles/Fonts/Roboto-Medium.ttf');
 }
+
 @font-face {
     font-family: 'Roboto-light';
     src: url('/Styles/Fonts/Roboto-Light.ttf');
@@ -49,10 +50,20 @@ h2 {
 }
 
 form input,
-form textarea,
 form select,
 form button {
     width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: "Roboto";
+    font-size: 14px;
+}
+
+form textarea {
+    width: 100%;
+    height: 70px;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
@@ -84,7 +95,7 @@ form button:hover {
 
 .task {
     border: 1px solid silver;
-    height: 155px;
+    height: fit-content;
     box-shadow: 3px 3px 5px grey;
     border-radius: 10px;
     padding: 10px;
@@ -94,16 +105,22 @@ form button:hover {
 .task:hover {
     transform: scale(1.05);
 }
-.task div h3{
+
+.task div h3 {
     margin-bottom: 5px;
 }
-.task div p{
+
+.task div p {
     margin: 5px 0;
 }
-.task div span{
+
+.task div .desc{
+    word-wrap: break-word;
     font-family: "Roboto-light";
     font-weight: 600;
 }
+
+
 .task-item {
     background-color: white;
     border-radius: 10px;
@@ -180,15 +197,19 @@ form button:hover {
     font-size: 12px;
     color: #333;
 }
-.red{
+
+.red {
     color: #DC143C;
 }
+
 .green {
     color: #3CB371;
 }
-.blue{
-    color: #00bfff ;
+
+.blue {
+    color: #00bfff;
 }
+
 .modal {
     display: none;
 }

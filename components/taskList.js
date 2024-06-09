@@ -1,42 +1,19 @@
-let tasks = [
-    // for example
-    {
-        title: "Task 1",
-        description: "Description for Task 1",
-        dueDate: "2024-06-22",
-        status: "To Do",
+// an array where all the tasks are stored
+export let tasks = []
 
-    },
-    {
-        title: "Task 2",
-        description: "Description for Task 2",
-        dueDate: "2024-03-12",
-        status: "In Progress",
 
-    },
-    {
-        title: "Task 3",
-        description: "Description for Task 3",
-        dueDate: "2024-01-10",
-        status: "Done",
-    },
-    {
-        title: "Task 4",
-        description: "Description for Task 4",
-        dueDate: "2023-11-05",
-        status: "In Progress",
-    },
-]
-
+// Function to initialize and render the task list when the app loads
 export const taskList = () => {
     createTaskList()
-}
-
+    }
+    
+    // Function to add a new task to the task list and recall the list
 export const addTaskToList = task => {
     tasks.push(task)
     createTaskList()
 }
 
+// Function to create and insert the task list in the DOM
 const createTaskList = () => {
     const taskList = document.getElementById('task-list')
     taskList.innerHTML = ''
@@ -62,11 +39,13 @@ const createTaskList = () => {
     })
 }
 
+// function to delete the task
 const deleteTask = index => {
     tasks.splice(index, 1)
     createTaskList()
 }
 
+// function to edit the task 
 const editTask = index => {
     const task = tasks[index]
     const modal = document.getElementById('editModal')
@@ -82,6 +61,7 @@ const editTask = index => {
     }
 }
 
+// this function saves changes of the task
 const saveChanges = index => {
     tasks[index] = {
         title: document.getElementById('edit-title').value,
@@ -94,6 +74,7 @@ const saveChanges = index => {
     createTaskList()
 }
 
+// this closes the modal when clicked!
 document.querySelector('.close').onclick = () => document.getElementById('editModal').classList.remove('active')
 
 

@@ -1,4 +1,32 @@
-let tasks = []
+let tasks = [
+    // for example
+    {
+        title: "Task 1",
+        description: "Description for Task 1",
+        dueDate: "2024-06-22",
+        status: "To Do",
+
+    },
+    {
+        title: "Task 2",
+        description: "Description for Task 2",
+        dueDate: "2024-03-12",
+        status: "In Progress",
+
+    },
+    {
+        title: "Task 3",
+        description: "Description for Task 3",
+        dueDate: "2024-01-10",
+        status: "Done",
+    },
+    {
+        title: "Task 4",
+        description: "Description for Task 4",
+        dueDate: "2023-11-05",
+        status: "In Progress",
+    },
+]
 
 export const taskList = () => {
     createTaskList()
@@ -67,4 +95,5 @@ const saveChanges = index => {
 }
 
 document.querySelector('.close').onclick = () => document.getElementById('editModal').classList.remove('active')
+
 

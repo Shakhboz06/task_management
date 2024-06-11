@@ -1,7 +1,7 @@
 describe('Task Management', () => {
   beforeEach(() => {
     // Visit the Task Management application before each test
-    cy.visit('http://127.0.0.1:5500/public/') 
+    cy.visit('http://127.0.0.1:5500/public/') // it is dev Server
   })
 
   it('should load the application', () => {

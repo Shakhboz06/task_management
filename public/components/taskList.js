@@ -36,6 +36,7 @@ const createTaskList = () => {
         elem.querySelector('.edit_task').onclick = () => editTask(index)
         elem.querySelector('.delete_task').onclick = () => deleteTask(index)
         taskList.append(elem)
+
     })
 }
 

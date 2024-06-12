@@ -1,0 +1,181 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-06-12T07:10:43.955Z",
+    "end": "2024-06-12T07:10:59.170Z",
+    "duration": 15215,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "55cb0899-6ec3-4c03-b9d0-9d0788a42d65",
+      "title": "",
+      "fullFile": "cypress\\e2e\\task_management.cy.js",
+      "file": "cypress\\e2e\\task_management.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "72d520f7-1265-4d14-92c6-23b4bc769e23",
+          "title": "Task Management",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should load the application",
+              "fullTitle": "Task Management should load the application",
+              "timedOut": null,
+              "duration": 2405,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('h1').should('contain', 'Task Management');",
+              "err": {},
+              "uuid": "c369ff74-7dfb-4eca-b24f-3709732dd5d1",
+              "parentUUID": "72d520f7-1265-4d14-92c6-23b4bc769e23",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should create a new task",
+              "fullTitle": "Task Management should create a new task",
+              "timedOut": null,
+              "duration": 2134,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#task-form input[name=\"title\"]').type('Test Task');\ncy.get('#task-form textarea[name=\"description\"]').type('This is a test task.');\ncy.get('#task-form input[name=\"dueDate\"]').type('2024-06-15');\ncy.get('#task-form select[name=\"status\"]').select('To Do');\ncy.get('#task-form button[type=\"submit\"]').click();\ncy.get('.task').should('contain', 'Test Task');\ncy.get('.task').should('contain', 'This is a test task.');\ncy.get('.task').should('contain', '15.06.2024');\ncy.get('.task').should('contain', 'To Do');",
+              "err": {},
+              "uuid": "14c383d7-94cb-4efa-ab7a-3d2b5840f821",
+              "parentUUID": "72d520f7-1265-4d14-92c6-23b4bc769e23",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should read and display tasks",
+              "fullTitle": "Task Management should read and display tasks",
+              "timedOut": null,
+              "duration": 1408,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.task').should('have.length.at.least', 1);",
+              "err": {},
+              "uuid": "48af663d-3114-4cf1-9252-126cc25f1b42",
+              "parentUUID": "72d520f7-1265-4d14-92c6-23b4bc769e23",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should update an existing task",
+              "fullTitle": "Task Management should update an existing task",
+              "timedOut": null,
+              "duration": 4205,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Add a new task first\ncy.get('#task-form input[name=\"title\"]').type('Task to be Updated');\ncy.get('#task-form textarea[name=\"description\"]').type('Update this task.');\ncy.get('#task-form input[name=\"dueDate\"]').type('2024-06-20');\ncy.get('#task-form select[name=\"status\"]').select('In Progress');\ncy.get('#task-form button[type=\"submit\"]').click();\n// Edit the task\ncy.get('.task').contains('Task to be Updated').parents('li').find('.edit_task').click();\ncy.get('#editModal').should('be.visible');\ncy.get('#editModal').within(() => {\n  cy.get('#edit-title').clear().type('Updated Task');\n  cy.get('#edit-description').clear().type('This task has been updated.');\n  cy.get('#edit-dueDate').clear().type('2024-07-01');\n  cy.get('#edit-status').select('Done');\n});\n// Save changes\ncy.get('#save_changes').click();\n// Validate the task has been updated\ncy.get('.task').should('contain', 'Updated Task');\ncy.get('.task').should('contain', 'This task has been updated.');\ncy.get('.task').should('contain', '01.07.2024');\ncy.get('.task').should('contain', 'Done');",
+              "err": {},
+              "uuid": "e9f4d5c8-7ecb-4861-8a43-c19111aa43d9",
+              "parentUUID": "72d520f7-1265-4d14-92c6-23b4bc769e23",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should delete a task",
+              "fullTitle": "Task Management should delete a task",
+              "timedOut": null,
+              "duration": 2023,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Add a new task first\ncy.get('#task-form input[name=\"title\"]').type('Task to be Deleted');\ncy.get('#task-form textarea[name=\"description\"]').type('Delete this task.');\ncy.get('#task-form input[name=\"dueDate\"]').type('2024-06-25');\ncy.get('#task-form select[name=\"status\"]').select('To Do');\ncy.get('#task-form button[type=\"submit\"]').click();\n// Delete the task\ncy.get('.task').contains('Task to be Deleted').parents('li').find('.delete_task').click();\n// Validate the task has been deleted\ncy.get('.task').should('not.contain', 'Task to be Deleted');",
+              "err": {},
+              "uuid": "b3545c40-79e3-45bd-8349-557f35abe653",
+              "parentUUID": "72d520f7-1265-4d14-92c6-23b4bc769e23",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c369ff74-7dfb-4eca-b24f-3709732dd5d1",
+            "14c383d7-94cb-4efa-ab7a-3d2b5840f821",
+            "48af663d-3114-4cf1-9252-126cc25f1b42",
+            "e9f4d5c8-7ecb-4861-8a43-c19111aa43d9",
+            "b3545c40-79e3-45bd-8349-557f35abe653"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 12175,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,7 +1,7 @@
 describe('Task Management', () => {
   beforeEach(() => {
     // Visit the Task Management application before each test
-    cy.visit('http://127.0.0.1:5500/public/') // it is dev Server
+    cy.visit('https://taskmanagerultra.netlify.app') // it is dev Server
   })
 
   it('should load the application', () => {
@@ -14,13 +14,7 @@ describe('Task Management', () => {
     cy.get('#task-form input[name="dueDate"]').type('2024-06-15')
     cy.get('#task-form select[name="status"]').select('To Do')
 
-    cy.get('#task-form').then(form => {
-      form.on('submit', event => {
-        event.preventDefault()
-      })
-    })
     cy.get('#task-form button[type="submit"]').click()
-
 
     cy.get('.task').should('contain', 'Test Task')
     cy.get('.task').should('contain', 'This is a test task.')
@@ -38,27 +32,22 @@ describe('Task Management', () => {
     cy.get('#task-form textarea[name="description"]').type('Update this task.')
     cy.get('#task-form input[name="dueDate"]').type('2024-06-20')
     cy.get('#task-form select[name="status"]').select('In Progress')
-    cy.get('#task-form ').then(form => {
-      form.on('submit', e => {
-        e.preventDefault()
-      })
-    })
     cy.get('#task-form button[type="submit"]').click()
-
+    
     // Edit the task
     cy.get('.task').contains('Task to be Updated').parents('li').find('.edit_task').click()
-    cy.get('#edit-title').clear().type('Updated Task')
-    cy.get('#edit-description').clear().type('This task has been updated.')
-    cy.get('#edit-dueDate').clear().type('2024-07-01')
-    cy.get('#edit-status').select('Done')
-
-    cy.get('#edit-task-form').then(form => {
-      form.on('submit', event => {
-        event.preventDefault()
-      })
+    
+    cy.get('#editModal').should('be.visible')
+    cy.get('#editModal').within(() => {
+      cy.get('#edit-title').clear().type('Updated Task')
+      cy.get('#edit-description').clear().type('This task has been updated.')
+      cy.get('#edit-dueDate').clear().type('2024-07-01')
+      cy.get('#edit-status').select('Done')
     })
-    cy.get('#save_changes').click()
 
+    // Save changes
+    cy.get('#save_changes').click()
+    
     // Validate the task has been updated
     cy.get('.task').should('contain', 'Updated Task')
     cy.get('.task').should('contain', 'This task has been updated.')
@@ -73,11 +62,6 @@ describe('Task Management', () => {
     cy.get('#task-form input[name="dueDate"]').type('2024-06-25')
     cy.get('#task-form select[name="status"]').select('To Do')
 
-    cy.get('#task-form').then(form => {
-      form.on('submit', event => {
-        event.preventDefault()
-      })
-    })
     cy.get('#task-form button[type="submit"]').click()
 
     // Delete the task

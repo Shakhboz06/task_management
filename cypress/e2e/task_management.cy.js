@@ -1,7 +1,7 @@
 describe('Task Management', () => {
   beforeEach(() => {
     // Visit the Task Management application before each test
-    cy.visit('https://taskmanagerultra.netlify.app') // it is dev Server
+    cy.visit('https://taskmanagerultra.netlify.app') 
   })
 
   it('should load the application', () => {
